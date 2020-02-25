@@ -1,16 +1,17 @@
 # TLOPO Launcher for multi-distribution launching.
 #
-#
+# python 3.7
 import APIRequests
 import Downloader
 import StartGame
+import getpass
 
 
 # TODO: Replace main with a GUI
 def getReponse(token=False):
     # Input username and password store in data dict
     username = input("Username: ")
-    password = input("Password: ")
+    password = getpass.getpass('Password: ')
     # If token requested then get that as well
     if token:
         gtoken = input("2FA Code: ")
