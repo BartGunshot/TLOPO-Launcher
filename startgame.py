@@ -2,7 +2,7 @@
 # Starts the game
 #
 import os
-from LauncherGlobals import FILEPATHS, EXECUTABLES
+from launcherglobals import FILEPATHS, EXECUTABLES
 
 
 def start_game(response, distr):

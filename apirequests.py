@@ -3,10 +3,10 @@
 #
 
 import requests
-from LauncherGlobals import API_URLS, HEADERS
+from launcherglobals import API_URLS, HEADERS
 
 
-class APIRequest:
+class APIRequester:
     """APIRequest handles all requests to the TLOPO API."""
 
     # Login

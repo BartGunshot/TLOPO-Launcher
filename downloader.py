@@ -6,7 +6,7 @@ import requests
 import bz2
 from hashlib import sha256
 from sys import platform
-from LauncherGlobals import API_DOWNLOAD, FILEPATHS
+from launcherglobals import API_DOWNLOAD, FILEPATHS
 
 
 # TODO: Cleanup path concatenation
@@ -73,3 +73,5 @@ class Downloader:
 
     def _check_hash(self):
         pass
+
+    

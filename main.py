@@ -1,9 +1,9 @@
 # TLOPO Launcher for multi-distribution launching.
 #
 # python 3.7
-import APIRequests
-import Downloader
-import StartGame
+import apirequests
+import downloader
+import startgame
 import getpass
 
 
@@ -23,7 +23,7 @@ def get_response(token=False):
                 'password': password}
 
     # Create APIRequest object
-    requester = APIRequests.APIRequest()
+    requester = apirequests.APIRequester()
     # Get version (test, dev, live)
     if username.find('@') != -1:
         ver = username[username.find('@')+1:]
@@ -57,8 +57,8 @@ while True:
         continue
 
 ### VERIFY FILES/DOWNLOAD
-downlder = Downloader.Downloader(version)
+downlder = downloader.Downloader(version)
 downlder.start_download()
 
 ### START GAME
-StartGame.start_game(response, version)
+startgame.start_game(response, version)
