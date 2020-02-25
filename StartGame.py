@@ -5,7 +5,7 @@ import os
 from LauncherGlobals import FILEPATHS, EXECUTABLES
 
 
-def startGame(response, distr):
+def start_game(response, distr):
     # Set OS environ variables for gameserver and playcookie
     os.environ['TLOPO_GAMESERVER'] = response.get('gameserver')
     os.environ['TLOPO_PLAYCOOKIE'] = response.get('token')

@@ -8,7 +8,7 @@ import getpass
 
 
 # TODO: Replace main with a GUI
-def getReponse(token=False):
+def get_response(token=False):
     # Input username and password store in data dict
     username = input("Username: ")
     password = getpass.getpass('Password: ')
@@ -31,19 +31,19 @@ def getReponse(token=False):
         ver = 'live'
 
     # Pass username/password dict to the APIRequest
-    return requester.getLoginResponse(data), ver
+    return requester.get_login_response(data), ver
 
 
 ### GET RESPONSE TO LOGIN
 # Login success code = 7
 while True:
-    response, version = getReponse()
+    response, version = get_response()
     print(response.get('message'))
     if response.get('status') == 7:
         break
     # Status 3 = 2FA
     elif response.get('status') == 3:
-        response, version = getReponse(token=True)
+        response, version = get_response(token=True)
         # Check to make sure login success
         if response.get('status') == 7:
             break
@@ -58,7 +58,7 @@ while True:
 
 ### VERIFY FILES/DOWNLOAD
 downlder = Downloader.Downloader(version)
-downlder.startDownload()
+downlder.start_download()
 
 ### START GAME
-StartGame.startGame(response, version)
+StartGame.start_game(response, version)

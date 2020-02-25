@@ -32,12 +32,12 @@ class Downloader:
             self.location = FILEPATHS.get('dev')
 
         self.downloadServer = self.server + API_DOWNLOAD.get(self.system)
-        self.manifest = self.__getPatchManifest()
+        self.manifest = self._get_patch_manifest()
 
-    def __getPatchManifest(self):
+    def _get_patch_manifest(self):
         return requests.get(self.downloadServer + API_DOWNLOAD.get('patcher')).json()
 
-    def startDownload(self):
+    def start_download(self):
         # Iterate through patch manifest
         for file in self.manifest.get('files'):
             if os.path.isfile(os.getcwd() + self.location + '\\' + file):
@@ -50,12 +50,12 @@ class Downloader:
                     # TODO: This sub-dict accessing can probably be cleaned up
                     if self.manifest.get('files').get(file).get('hash') != sha256(binary).hexdigest()[:7]:
                         # TODO: Check for patches from manifest and apply them.
-                        self.__download(file)
+                        self._download(file)
             else:
                 # If file dne download it
-                self.__download(file)
+                self._download(file)
 
-    def __download(self, filepath):
+    def _download(self, filepath):
         # GET request from TLOPO download servers for file, all files are downloaded w/ .b2 extension
         data = requests.get(self.downloadServer + filepath + '.bz2', stream=True).content
         file = os.getcwd() + self.location + '\\' + filepath
@@ -68,8 +68,8 @@ class Downloader:
         with open(file, 'wb') as content:
             content.write(bz2.decompress(data))
 
-    def __downloadPatches(self):
+    def _download_patches(self):
         pass
 
-    def __checkHash(self):
+    def _check_hash(self):
         pass
