@@ -3,7 +3,7 @@
 #
 import os
 import requests
-import bz2
+from bz2 import BZ2Decompressor
 from hashlib import sha256
 from sys import platform
 from launcherglobals import API_DOWNLOAD, FILEPATHS
@@ -42,7 +42,7 @@ class Downloader:
         for file in self.manifest.get('files'):
             if os.path.isfile(os.getcwd() + self.location + '\\' + file):
 
-                # If file exists then open it and compare SHA1 hash first 7 chars
+                # If file exists then open it and compare SHA256 hash first 7 chars
                 # TODO: Move this into sub function for less clutter
                 with open(os.getcwd() + '\\' + self.location + '\\' + file, 'rb') as existingfile:
 
@@ -57,7 +57,7 @@ class Downloader:
 
     def _download(self, filepath):
         # GET request from TLOPO download servers for file, all files are downloaded w/ .b2 extension
-        data = requests.get(self.downloadServer + filepath + '.bz2', stream=True).content
+        data = requests.get(self.downloadServer + filepath + '.bz2', stream=True)
         file = os.getcwd() + self.location + '\\' + filepath
 
         # If file path does not exist create it
@@ -65,8 +65,11 @@ class Downloader:
             os.makedirs(os.path.dirname(file))
 
         # Write file from downloaded content, decompress bz2 directly from memory before writing
+        decompressor = BZ2Decompressor()
         with open(file, 'wb') as content:
-            content.write(bz2.decompress(data))
+            for chunk in data.iter_content(chunk_size=128):
+                content.write(decompressor.decompress(chunk))
+
 
     def _download_patches(self):
         pass
@@ -74,4 +77,3 @@ class Downloader:
     def _check_hash(self):
         pass
 
-    

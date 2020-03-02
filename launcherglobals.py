@@ -21,7 +21,8 @@ API_DOWNLOAD = {
     'linux2': 'linux2/',
     'linux': 'linux2/',
     'darwin': 'mac/',
-    'patcher': 'patcher.json'
+    'patcher': 'patcher.json',
+    'patches': 'patches/'
 }
 
 # TODO: Make non-windows specific
