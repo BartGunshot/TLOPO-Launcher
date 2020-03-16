@@ -17,18 +17,18 @@
 #### Planned Features
 
 - GUI
-    -[ ] Basic functionality
-    -[ ] With option to run in command line
-    -[ ] Stylish look
-    -[ ] Resolution Scaling
-    -[ ] Download progress
-    -[ ] Blog posts
-    -[ ] Release notes
+    - [ ] Basic functionality
+    - [ ] With option to run in command line
+    - [ ] Stylish look
+    - [ ] Resolution Scaling
+    - [ ] Download progress
+    - [ ] Blog posts
+    - [ ] Release notes
 - Credential remembering
-    -[ ] Usernames
-    -[ ] Password (This would be a security issue even if handled correctly, so might not)
+    - [ ] Usernames
+    - [ ] Password (This would be a security issue even if handled correctly, so might not)
 - Localization Support (Useless? Not sure if the game supports other languages but nice feature anyways)
-    -[ ] English localization
+    - [ ] English localization
 - Game settings configuration
 
 #### Known Issues
