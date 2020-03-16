@@ -27,10 +27,10 @@ API_DOWNLOAD = {
 
 # TODO: Make non-windows specific
 FILEPATHS = {
-    'default': '\\Program Files (x86)\\TLOPO',
-    'test': '\\TEST',
-    'live': '\\LIVE',
-    'dev': '\\dev'
+    'default': '/Program Files (x86)/TLOPO',
+    'test': 'TEST',
+    'live': 'LIVE',
+    'dev': 'dev'
 }
 
 EXECUTABLES = {
