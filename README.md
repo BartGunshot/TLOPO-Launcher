@@ -35,7 +35,6 @@
 
 * Live version appears to get stuck after initial download. Unsure of cause as the actual game binary is what is getting stuck, not my launcher. Will investigate further. Workaround: just relaunch.
 * Patching with TLOPO's patch files is non-functional (I'm unsure if this will break things in the future)
-* File paths in code is messy and windows only right now
 * Binary is somewhat large compared to code, bloated w/ unused python modules
 
 ##### Note for linux users
