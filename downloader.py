@@ -18,8 +18,8 @@ class Downloader:
         self.system = platform
         self.currdir = pathlib.Path.cwd()
 
-        # Test server changed win32 path to win64
-        if self.system == 'win32' and distr != 'live':
+        # TLOPO uses win64 for it's file paths
+        if self.system == 'win32':
             self.system = 'win64'
 
         # Get distribution's download server
@@ -37,9 +37,11 @@ class Downloader:
         self.manifest = self._get_patch_manifest()
 
     def _get_patch_manifest(self):
+        """Returns the patch manifest JSON from the download server."""
         return requests.get(self.downloadServer + API_DOWNLOAD.get('patcher')).json()
 
     def start_download(self):
+        """Checks download server, downloads/updates game files."""
         # Iterate through patch manifest
         for filename in self.manifest.get('files'):
             file = pathlib.Path(self.currdir, self.location, filename)
@@ -59,6 +61,7 @@ class Downloader:
                 self._download(filename)
 
     def _download(self, filename):
+        """Download requested file."""
         # GET request from TLOPO download servers for file, all files are downloaded w/ .b2 extension
         data = requests.get(self.downloadServer + filename + '.bz2', stream=True)
         file = pathlib.Path(self.currdir, self.location, filename)
@@ -77,6 +80,6 @@ class Downloader:
     def _download_patches(self):
         pass
 
-    def _check_hash(self):
+    def _check_hash(self, filename):
         pass
 
