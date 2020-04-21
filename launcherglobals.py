@@ -3,6 +3,7 @@
 #
 
 API_URLS = {
+    'api': 'https://api.tlopo.com/',
     'login': 'https://api.tlopo.com/login/',
     'launcher_news': 'https://api.tlopo.com/launcher/',
     'feed_news': 'https://api.tlopo.com/news/feed/',
